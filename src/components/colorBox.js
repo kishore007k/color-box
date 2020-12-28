@@ -41,6 +41,8 @@ const ColorBox = () => {
 	const [ID, setID] = useState(0);
 	const [Items, setItems] = useState([]);
 
+	const totalItems = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16];
+
 	const handleColorChange = (e) => {
 		e.preventDefault();
 		const itemId = e.target.id;
@@ -62,100 +64,25 @@ const ColorBox = () => {
 			setActiveItem(0);
 			setActiveItem(itemId);
 		}
-		console.log(activeItem);
+		console.log(itemId);
 	};
 
 	return (
 		<Wrapper>
 			<div className="gridContainer">
-				<div>
-					<button
-						onClick={handleColorChange}
-						className={Items.includes("1") ? "gridItems-active" : "gridItems"}
-						id="1"
-					/>
-					<button
-						onClick={handleColorChange}
-						className={Items.includes("2") ? "gridItems-active" : "gridItems"}
-						id="2"
-					/>
-					<button
-						onClick={handleColorChange}
-						className={Items.includes("3") ? "gridItems-active" : "gridItems"}
-						id="3"
-					/>
-					<button
-						onClick={handleColorChange}
-						className={Items.includes("4") ? "gridItems-active" : "gridItems"}
-						id="4"
-					/>
-				</div>
-				<div>
-					<button
-						onClick={handleColorChange}
-						className={Items.includes("5") ? "gridItems-active" : "gridItems"}
-						id="5"
-					/>
-					<button
-						onClick={handleColorChange}
-						className={Items.includes("6") ? "gridItems-active" : "gridItems"}
-						id="6"
-					/>
-					<button
-						onClick={handleColorChange}
-						className={Items.includes("7") ? "gridItems-active" : "gridItems"}
-						id="7"
-					/>
-					<button
-						onClick={handleColorChange}
-						className={Items.includes("8") ? "gridItems-active" : "gridItems"}
-						id="8"
-					/>
-				</div>
-				<div>
-					<button
-						onClick={handleColorChange}
-						className={Items.includes("9") ? "gridItems-active" : "gridItems"}
-						id="9"
-					/>
-					<button
-						onClick={handleColorChange}
-						className={Items.includes("10") ? "gridItems-active" : "gridItems"}
-						id="10"
-					/>
-					<button
-						onClick={handleColorChange}
-						className={Items.includes("11") ? "gridItems-active" : "gridItems"}
-						id="11"
-					/>
-					<button
-						onClick={handleColorChange}
-						className={Items.includes("12") ? "gridItems-active" : "gridItems"}
-						id="12"
-					/>
-				</div>
-				<div>
-					<button
-						onClick={handleColorChange}
-						className={Items.includes("13") ? "gridItems-active" : "gridItems"}
-						id="13"
-					/>
-					<button
-						onClick={handleColorChange}
-						className={Items.includes("14") ? "gridItems-active" : "gridItems"}
-						id="14"
-					/>
-					<button
-						onClick={handleColorChange}
-						className={Items.includes("15") ? "gridItems-active" : "gridItems"}
-						id="15"
-					/>
-					<button
-						onClick={handleColorChange}
-						className={Items.includes("16") ? "gridItems-active" : "gridItems"}
-						id="16"
-					/>
-				</div>
+				{totalItems.map((item, index) => {
+					return (
+						<div key={index}>
+							<button
+								id={index}
+								onClick={handleColorChange}
+								className={
+									Items.includes(index.toString()) ? "gridItems-active" : "gridItems"
+								}
+							/>
+						</div>
+					);
+				})}
 			</div>
 		</Wrapper>
 	);
